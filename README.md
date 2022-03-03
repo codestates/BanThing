@@ -43,22 +43,20 @@ BanThing 의 자세한 Work Log 를 확인해보고 싶으시다면 아래 링�
 
 # Used Stack
 
-<img src="https://cdn.discordapp.com/attachments/932457592247173125/945325417257115708/2022-02-21_11.png" width=90% height="auto" />
+<img src="https://cdn.discordapp.com/attachments/890401766724751370/948833065441054761/2022-03-03_3.43.33.png" width=90% height="auto" />
 
 ### Front-End
-<img alt="TypeScript" src ="https://img.shields.io/badge/TypeScript-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=white"/> <img alt="Next.js" src ="https://img.shields.io/badge/Next.js-000000.svg?&style=for-the-badge&logo=Next.js&logoColor=white"/>
+<img alt="TypeScript" src ="https://img.shields.io/badge/TypeScript-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=white"/> <img alt="React" src ="https://img.shields.io/badge/REACT-61DAFB.svg?&style=for-the-badge&logo=React&logoColor=black"/>
 <img alt="axios" src ="https://img.shields.io/badge/axios-8c4194.svg?&style=for-the-badge&logo=axios&logoColor=white"/>
-<img alt="styled-components" src ="https://img.shields.io/badge/styled components-DB7093.svg?&style=for-the-badge&logo=styled-components&logoColor=white"/>
-<img alt="Socket.io" src ="https://img.shields.io/badge/Socket.io-25c2a0.svg?&style=for-the-badge&logo=Socket.io&logoColor=white"/>
+<img alt="Next.js" src ="https://img.shields.io/badge/Next.js-000000.svg?&style=for-the-badge&logo=Next.js&logoColor=white"/>
 
 ### Back-End
 
 <img alt="TypeScript" src ="https://img.shields.io/badge/TypeScript-3178C6.svg?&style=for-the-badge&logo=TypeScript&logoColor=white"/> <img alt="TypeORM" src ="https://img.shields.io/badge/Type ORM-eb4734.svg?&style=for-the-badge&logo=TypeORM&logoColor=white"/>
-<img alt="BCrypt-HASH" src ="https://img.shields.io/badge/BCrypt HASH-575757.svg?&style=for-the-badge&logo=None&logoColor=white"/>
-<img alt="JSON-Web-Tokens" src ="https://img.shields.io/badge/JWT-d63aff.svg?&style=for-the-badge&logo=JSON Web Tokens&logoColor=white"/>
-<img alt="Nest.js" src ="https://img.shields.io/badge/Nest.js-E0234E.svg?&style=for-the-badge&logo=NestJS&logoColor=white"/>
-<img alt="Socket.io" src ="https://img.shields.io/badge/Socket.io-25c2a0.svg?&style=for-the-badge&logo=Socket.io&logoColor=white"/>
 <img alt="MySQL" src ="https://img.shields.io/badge/MySQL-4479A1.svg?&style=for-the-badge&logo=MySQL&logoColor=white"/>
+<img alt="Nest.js" src ="https://img.shields.io/badge/Nest.js-E0234E.svg?&style=for-the-badge&logo=NestJS&logoColor=white"/>
+<img alt="JSON-Web-Tokens" src ="https://img.shields.io/badge/JWT-d63aff.svg?&style=for-the-badge&logo=JSON Web Tokens&logoColor=white"/>
+<img alt="BCrypt-HASH" src ="https://img.shields.io/badge/BCrypt HASH-575757.svg?&style=for-the-badge&logo=None&logoColor=white"/>
 
 ### Dev-Ops
 <img alt="Amazon-AWS" src ="https://img.shields.io/badge/AWS-232F3E.svg?&style=for-the-badge&logo=Amazon AWS&logoColor=white"/> <img alt="Amazon-EC2" src ="https://img.shields.io/badge/Amazon EC2-e97b13.svg?&style=for-the-badge&logo=None&logoColor=white"/>
