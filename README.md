@@ -1,4 +1,4 @@
-<img src="https://cdn.discordapp.com/attachments/890401766724751370/942612988614037565/f45bd8aad5bb97d9.jpg" />
+<img src="https://cdn.discordapp.com/attachments/890401766724751370/949253358986858556/README_.jpg" />
 
 # **[BanThing](https://banthing.kr)**
 BanThing 을 클릭하시면 해당 서비스로 이동하실 수 있습니다 :)
@@ -13,7 +13,7 @@ BanThing 을 클릭하시면 해당 서비스로 이동하실 수 있습니다 :
 <br/> &nbsp;
 
 # About BanThing
-<img src="https://cdn.discordapp.com/attachments/890401766724751370/942605419359117363/LoGo_1.png" width=30% height="auto" />
+<img src="https://cdn.discordapp.com/attachments/890401766724751370/949251608485703720/ver2_-2-.png" width=50% height="auto" />
 
 배가 고파서 배달 음식을 시켜 먹으려는데 1인분을 주문하자니 최소 주문금액을 맞춰야 해서 부담스럽고,<br/> 최소 주문금액을 맞췄더니 비싼 배달비가 부담스러워 배달 음식 하나 마음 편히 못 시켜 드신 적, 있으시죠 :(
 <br/> 이 모든 부담을 반으로 덜어줄 **'반띵'** 지금 이용해보세요!
