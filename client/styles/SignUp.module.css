@@ -16,7 +16,7 @@
   background-color: #ffffff;
   border-width: 5px;
   border-radius: 30px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .signup_times {
@@ -34,12 +34,16 @@
 }
 
 .signup_title {
-  font-size: 47px;
-  font-weight: 700;
-  color: #ff8a3c;
-  margin-top: 23px;
-  margin-bottom: 15px;
-  font-family: 'BMDOHYEON', sans-serif;
+  display: flex;
+  width: 278px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto 0px auto;
+}
+
+.signup_title_logo {
+  display: flex;
+  width: 230px;
 }
 
 .signup_id_name_container {
@@ -131,6 +135,10 @@
 
 .signup_button:hover {
   cursor: pointer;
+}
+
+.signup_button:focus {
+  outline-color: #ffc49d;
 }
 
 .signup_icon {

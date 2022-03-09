@@ -1,25 +1,19 @@
 .button {
   width: 181px;
   height: 70px;
+
   border: none;
   border-radius: 20px 20px 0 0;
-  background-color: var(--color-white);
-  z-index: 2;
+  background-color: #efefef;
+  z-index: 1;
 }
 .section {
   display: flex;
+  position: relative;
   justify-content: center;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .section {
     display: none;
-  }
-}
-@keyframes slide {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

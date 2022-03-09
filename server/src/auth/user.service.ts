@@ -40,11 +40,6 @@ export class UserService {
     return await this.userRepository.delete({ user_id });
   }
 
-  //카카오 회원탈퇴
-  async snsDelete(user_id: string): Promise<any> {
-    return await this.userRepository.delete({ user_id });
-  }
-
   //비밀번호 암호화
   async transformPassword(user: SignUpDTO | UserInfoDTO): Promise<string> {
     return await bcrypt.hash(user.password, 12);

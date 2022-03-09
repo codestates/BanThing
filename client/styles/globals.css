@@ -23,6 +23,7 @@ a {
   --color-orange: #ff8a3d;
 
   --padding-large: 4rem;
+  --padding-2rem: 2rem;
   --padding-base: 1rem;
   --padding-small: 0.5rem;
 
@@ -46,4 +47,17 @@ a {
 
   --font-weight-bold: 800;
   --font-weight-normal: 400;
+
+  --min-sider-width: 30px;
+
+  --component-min-height: 85vh;
+
+  --component-mediaquery-min-height: 400px;
+
+  --mobile-sidebar-height: 80vh;
+
+  --box-shadow: -1px -1px 20px rgba(255, 255, 255, 0.25),
+    inset 2px 2px 50px rgba(255, 255, 255, 0.25),
+    8px 30px 30px rgba(255, 255, 255, 0.4),
+    inset -2px -5px 10px rgba(104, 50, 6, 0.3);
 }

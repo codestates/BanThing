@@ -19,4 +19,7 @@ export class Users {
 
   @Column({ nullable: true })
   auth: string;
+
+  @Column({ default: false })
+  isAdmin: boolean;
 }

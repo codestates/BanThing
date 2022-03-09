@@ -1,59 +1,37 @@
 import '../styles/globals.css';
 import Header from '../components/header';
 import type { AppProps } from 'next/app';
-// import GlobalStyle from '../styles/GlobalStyle';
-import { ThemeProvider } from 'styled-components';
-import { theme } from '../styles/theme';
 import { useState, useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLogin, setIsLogin] = useState(false);
-  const [accessToken, setAccessToken] = useState('');
 
   let cookie: any;
-  let cookieToken: any;
-  let cookieList: any;
 
-  if (typeof document !== 'undefined') {
+  if (
+    typeof document !== 'undefined' &&
+    document.cookie.includes('accessToken')
+  ) {
     cookie = document.cookie;
-    if (cookie.includes(';') && cookie.includes('accessToken')) {
-      cookieList = cookie.split(';');
-      const findAccessToken = cookieList.filter((cookie: any) => {
-        return cookie.includes('accessToken');
-      });
-      cookieToken = findAccessToken[0].split('=')[1];
-    } else if (!cookie.includes(';') && cookie.includes('accessToken')) {
-      cookieToken = cookie.split('=')[1];
-    }
   } else {
     cookie = '';
   }
 
   useEffect(() => {
-    const accessToken: any = localStorage.getItem('accessToken');
-    if (cookieToken && cookie.includes('accessToken')) {
-      setIsLogin(true);
-      setAccessToken(cookieToken);
-      if (accessToken) {
-        setAccessToken(accessToken);
+    if (typeof document !== 'undefined') {
+      const cookie = document.cookie;
+      if (cookie.includes('accessToken')) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
       }
-    } else {
-      setIsLogin(false);
-      setAccessToken('');
     }
   }, [cookie]);
 
   return (
     <>
-      <Header
-        isLogin={isLogin}
-        setIsLogin={setIsLogin}
-        accessToken={accessToken}
-        setAccessToken={setAccessToken}
-      />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} accessToken={accessToken} />
-      </ThemeProvider>
+      <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+      <Component {...pageProps} />
     </>
   );
 }

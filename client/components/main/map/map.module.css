@@ -1,16 +1,26 @@
 .main {
   position: relative;
   display: flex;
+  overflow: hidden;
 }
 .map {
   display: flex;
-  width: 70vw;
-  height: auto;
-  min-height: 715px;
+  height: 100vh;
+  min-width: 80vw;
 }
 @media screen and (max-width: 768px) {
+  .main {
+    width: 100vw;
+  }
   .map {
     width: 100vw;
-    height: auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-height: 800px) {
+  .main {
+    min-height: 700px;
+  }
+  .map {
+    min-height: 700px;
   }
 }

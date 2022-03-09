@@ -3,4 +3,5 @@ export class SignUpDTO {
   password: string;
   nickname: string;
   auth: string;
+  isAdmin?: boolean;
 }

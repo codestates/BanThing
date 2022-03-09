@@ -1,0 +1,74 @@
+.introduction_container_right {
+  width: 85vw;
+  min-height: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.introduction_main_right {
+  display: flex;
+  width: 85vw;
+  height: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ff8a3c;
+  border-radius: 30px;
+  align-items: center;
+  margin-top: 10vw;
+  margin-bottom: 30vw;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.introduction_main_number {
+  color: white;
+  font-size: 5vw;
+  font-family: 'BMDOHYEON', sans-serif;
+  font-weight: 900;
+  margin-bottom: 5vw;
+}
+
+.introduction_title_right {
+  display: flex;
+  color: #ffffff;
+  font-size: 7.2vw;
+  font-weight: 500;
+  justify-content: flex-end;
+  font-family: 'BMDOHYEON', sans-serif;
+}
+
+.introduction_main_line {
+  color: #ffffff;
+  font-family: 'NanumGothic-Bold', sans-serif;
+  font-size: 1.1vw;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+}
+
+.introduction_image {
+  display: flex;
+  width: 85vw;
+}
+
+.introduction_description_right {
+  width: 70vw;
+  line-height: 1.5;
+  font-size: 3.2vw;
+  text-align: start;
+  font-family: 'NanumGothic', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+.introduction_space {
+  opacity: 0;
+  font-size: 1.2vw;
+}
+
+@media screen and (min-width: 768px) {
+  .introduction_container_right {
+    display: none;
+  }
+}

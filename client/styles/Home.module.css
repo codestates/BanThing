@@ -34,6 +34,44 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Pretendard-SemiBold';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff')
+    format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.use_image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vw;
+}
+
+.use_image {
+  display: flex;
+  width: 75vw;
+}
+
 .home_container {
   padding: 0;
 }
@@ -46,52 +84,110 @@
   color: #000000;
 }
 
+.title_button {
+  width: 12vw;
+  height: 5vw;
+  color: #ffffff;
+  font-size: 2vw;
+  font-weight: 700;
+  border-radius: 12px;
+  background-color: #ff8a3c;
+  border: solid;
+  border-width: 5px;
+  border-color: #ff8a3c;
+  transition: 0.3s ease;
+  font-family: 'Pretendard-SemiBold', sans-serif;
+}
+
+.title_button_description {
+  font-family: 'BMDOHYEON', sans-serif;
+}
+
+.title_button:hover {
+  color: white;
+  background-color: #ff8a3c;
+  border-width: 5px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.title_button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.title_button span:after {
+  content: '\00bb';
+  position: absolute;
+  color: white;
+  font-size: 2.4vw;
+  opacity: 0;
+  top: -0.45vw;
+  left: 7.4vw;
+  transition: 0.3s ease;
+}
+
+.title_button:hover span {
+  padding-right: 1vw;
+}
+
+.title_button:hover span:after {
+  color: white;
+  opacity: 1;
+  right: 0;
+  transition: 0.3s ease;
+}
+
 /* --------------------introduction.tsx CSS-------------------- */
 
 .introduction_container_right {
-  width: 100vw;
+  width: 85vw;
   min-height: 60vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   /* background-color: gray; */
+  margin: auto;
 }
 
 .introduction_container_left {
-  width: 100vw;
+  width: 85vw;
   min-height: 60vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   /* background-color: rgb(46, 46, 46); */
+  margin: auto;
 }
 
 .introduction_main_right {
   display: flex;
-  width: 36vw;
+  width: 33vw;
   margin-left: 5vw;
-  min-height: 35vw;
+  min-height: 36vw;
   flex-direction: column;
+  justify-content: center;
   background-color: #ff8a3c;
   border-radius: 30px;
   align-items: center;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .introduction_main_left {
   display: flex;
-  width: 36vw;
+  width: 33vw;
   margin-right: 5vw;
-  min-height: 35vw;
+  min-height: 36vw;
   flex-direction: column;
+  justify-content: center;
   background-color: #ff8a3c;
   border-radius: 30px;
   align-items: center;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
-    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .introduction_main_number {
@@ -99,14 +195,13 @@
   font-size: 1.7vw;
   font-family: 'BMDOHYEON', sans-serif;
   font-weight: 900;
-  margin-top: 5.5vw;
   margin-bottom: 2vw;
 }
 
 .introduction_title_right {
   display: flex;
   color: #ffffff;
-  font-size: 3.1vw;
+  font-size: 2.7vw;
   font-weight: 500;
   justify-content: flex-end;
   font-family: 'BMDOHYEON', sans-serif;
@@ -114,7 +209,7 @@
 
 .introduction_title_left {
   display: flex;
-  font-size: 3.1vw;
+  font-size: 2.7vw;
   font-weight: 500;
   color: #ffffff;
   justify-content: flex-start;
@@ -131,21 +226,23 @@
 
 .introduction_image {
   display: flex;
-  width: 50vw;
+  width: 40vw;
 }
 
 .introduction_description_right {
+  width: 24.7vw;
   line-height: 1.5;
-  font-size: 1.4vw;
-  text-align: end;
+  font-size: 1.2vw;
+  text-align: start;
   font-family: 'NanumGothic', sans-serif;
   font-weight: 700;
   color: white;
 }
 
 .introduction_description_left {
+  width: 24.7vw;
   line-height: 1.5;
-  font-size: 1.4vw;
+  font-size: 1.2vw;
   text-align: start;
   font-family: 'NanumGothic', sans-serif;
   font-weight: 700;
@@ -157,6 +254,20 @@
   font-size: 1.2vw;
 }
 
+@media screen and (max-width: 767px) {
+  .introduction_container_left {
+    display: none;
+  }
+
+  .introduction_container_right {
+    display: none;
+  }
+
+  .use_image_container {
+    display: none;
+  }
+}
+
 /* ------------------------------------------------------------ */
 
 /* -----------------------header.tsx CSS----------------------- */
@@ -165,28 +276,26 @@
   display: flex;
   position: fixed;
   width: 100vw;
-  height: 4.6vw;
+  height: 75px;
   text-align: center;
   align-items: center;
   padding: 0 2.3vw 0 1.3vw;
-  background-color: #fafafa;
-  opacity: 0.9;
+  background-color: #fcfcfc;
   z-index: 2;
 }
 
 .logo {
   display: flex;
-  height: 3.7vw;
+  height: 60px;
   width: 50%;
   justify-content: flex-start;
 }
 
 .nav {
-  display: flex;
   width: 50%;
   list-style-type: none;
   justify-content: flex-end;
-  font-size: 1.4vw;
+  font-size: 23.5px;
   color: rgb(0 0 0 / 80%);
   font-family: 'Poppins', sans-serif;
 }
@@ -217,11 +326,66 @@
 }
 
 .nav_user_image {
-  height: 2.8vw;
+  height: 45px;
 }
 
 .nav_user_image:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 0 25px 0 20px;
+    background-color: #fcfcfc;
+  }
+
+  .nav {
+    display: none;
+    font-size: 22px;
+  }
+
+  .nav_divide {
+    padding: 0 15px 0 15px;
+  }
+
+  .nav_user_image_container {
+    display: none;
+  }
+
+  .hamburger_container {
+    display: flex;
+  }
+
+  .hamburger_nav_login_true {
+    display: flex;
+  }
+
+  .hamburger_nav_login_false {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: flex;
+    font-size: 22px;
+  }
+
+  .hamburger_container {
+    display: none;
+  }
+
+  .hamburger_nav_login_true {
+    display: none;
+  }
+
+  .hamburger_nav_login_false {
+    display: none;
+  }
+
+  .nav_user_image_container {
+    display: flex;
+  }
 }
 
 /* ------------------------------------------------------------ */
@@ -229,19 +393,25 @@
 /* ----------------------progress.tsx CSS---------------------- */
 
 .progress_container {
-  margin-top: 4.6vw;
+  margin-top: 75px;
   position: fixed;
   width: 100%;
   z-index: 2;
 }
 
 .progress_bar {
-  height: 0.25vw;
+  height: 4px;
   background: #ff9f5f;
   width: 0%;
   border-radius: 25px;
   transition: width 0.1s ease;
   opacity: 0.9;
+}
+
+@media screen and (max-width: 767px) {
+  .progress_bar {
+    height: 4px;
+  }
 }
 
 /* ------------------------------------------------------------ */
@@ -272,6 +442,86 @@
   font-family: 'BMDOHYEON', sans-serif;
 }
 
+.caption_button {
+  width: 12vw;
+  height: 5vw;
+  color: #ffffff;
+  font-size: 2vw;
+  font-weight: 700;
+  border-radius: 12px;
+  background-color: #ff8a3c;
+  border: solid;
+  border-width: 5px;
+  border-color: #ff8a3c;
+  transition: 0.3s ease;
+  font-family: 'Pretendard-SemiBold', sans-serif;
+}
+
+.caption_button_description {
+  font-family: 'BMDOHYEON', sans-serif;
+}
+
+.caption_button:hover {
+  color: white;
+  background-color: #ff8a3c;
+  border-width: 5px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.caption_button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.caption_button span:after {
+  content: '\00bb';
+  position: absolute;
+  color: white;
+  font-size: 2.4vw;
+  opacity: 0;
+  top: -0.45vw;
+  left: 7.4vw;
+  transition: 0.3s ease;
+}
+
+.caption_button:hover span {
+  padding-right: 1vw;
+}
+
+.caption_button:hover span:after {
+  color: white;
+  opacity: 1;
+  right: 0;
+  transition: 0.3s ease;
+}
+
+@media screen and (max-width: 767px) {
+  .caption_image {
+    width: 55vw;
+  }
+
+  .caption_description {
+    width: 90vw;
+    font-size: 6vw;
+    margin-top: 12vw;
+    margin-bottom: 12vw;
+  }
+
+  .caption_button {
+    display: flex;
+    width: 35vw;
+    height: 16vw;
+    font-size: 6vw;
+    margin-bottom: 30vw;
+    margin-top: -3vw;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 /* ------------------------------------------------------------ */
 
 /* -----------------------footer.tsx CSS----------------------- */
@@ -280,6 +530,7 @@
   display: flex;
   width: 100%;
   height: 15vw;
+  min-height: 120px;
   text-align: center;
   align-items: center;
   flex-direction: column;
@@ -319,4 +570,173 @@
   font-family: 'Poppins', sans-serif;
 }
 
+@media screen and (max-width: 767px) {
+  .team_title {
+    font-size: 16px;
+  }
+
+  .member_name {
+    font-size: 12px;
+  }
+
+  .member_position {
+    font-size: 10px;
+  }
+
+  .copyright {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+}
+
 /* ------------------------------------------------------------ */
+
+.hamburger_container {
+  width: 50%;
+  height: 50px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hamburger_box {
+  display: flex;
+  width: 35px;
+  height: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger_box:hover {
+  cursor: pointer;
+}
+
+/* .hamburger_box:active {
+  height: 100px;
+} */
+
+.hamburger_line {
+  display: flex;
+  width: 100%;
+  height: 5px;
+  background-color: rgb(46, 46, 46);
+  justify-content: space-between;
+  border-radius: 20px;
+  transition: all 0.4s;
+}
+
+.hamburger_line1 {
+  display: flex;
+  width: 100%;
+  height: 5px;
+  background-color: rgb(46, 46, 46);
+  justify-content: space-between;
+  border-radius: 20px;
+  transform: translateY(12.5px) rotate(-45deg);
+  transition: all 0.4s;
+}
+
+.hamburger_line2 {
+  display: flex;
+  width: 100%;
+  height: 5px;
+  background-color: rgb(46, 46, 46);
+  justify-content: space-between;
+  border-radius: 20px;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.hamburger_line3 {
+  display: flex;
+  width: 100%;
+  height: 5px;
+  background-color: rgb(46, 46, 46);
+  justify-content: space-between;
+  border-radius: 20px;
+  transform: translateY(-12.5px) rotate(45deg);
+  transition: all 0.4s;
+}
+
+.hamburger_nav_container {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  justify-content: flex-end;
+  z-index: 4;
+}
+
+.hamburger_nav_login_true {
+  position: fixed;
+  width: 150px;
+  height: 230px;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 19px;
+  color: rgb(0 0 0 / 100%);
+  background-color: #fcfcfcef;
+  margin: 90px 15px auto auto;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  z-index: 2;
+  animation: fadein 0.3s;
+}
+
+.hamburger_nav_login_false {
+  position: fixed;
+  width: 150px;
+  height: 190px;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 19px;
+  color: rgb(0 0 0 / 100%);
+  background-color: #fcfcfcef;
+  margin: 90px 15px auto auto;
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  z-index: 2;
+  animation: fadein 0.3s;
+}
+
+.hamburger_nav_menu {
+  display: flex;
+  width: 120px;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.2s;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 13px;
+}
+
+.hamburger_nav_menu:active {
+  cursor: pointer;
+  color: white;
+  background-color: #ff9752;
+}
+
+.hamburger_nav_divide {
+  color: rgb(0 0 0 / 80%);
+  font-family: 'Poppins-ExtraLight', sans-serif;
+}
+
+.hamburger_nav_user_image_container {
+  display: flex;
+  align-items: center;
+  margin-left: 2.4vw;
+}
+
+.hamburger_nav_user_image {
+  height: 45px;
+}
+
+.nav_user_image:hover {
+  cursor: pointer;
+}

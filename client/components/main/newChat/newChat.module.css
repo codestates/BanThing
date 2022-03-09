@@ -5,6 +5,7 @@
   background-color: var(--gary-color);
 }
 .input {
+  font-family: 'NanumGothic';
   height: 46px;
   width: 100%;
   border-radius: var(--border-radius-small);
@@ -12,6 +13,7 @@
   border: none;
 }
 .input_button {
+  font-family: 'NanumGothic';
   color: var(--white-color);
   font-weight: var(--font-weight-bold);
 }

@@ -20,7 +20,7 @@ export default function Caption() {
         </Fade>
         <Fade triggerOnce={true} delay={1000}>
           <Link href="/main">
-            <button className={styles.title_button}>
+            <button className={styles.caption_button}>
               <span>시작하기</span>
             </button>
           </Link>

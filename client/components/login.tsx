@@ -10,7 +10,6 @@ interface propsType {
   loginModal: boolean;
   setLoginModal: Function;
   setIsLogin: Function;
-  setAccessToken: Function;
 }
 
 export default function Login(prop: propsType) {
@@ -52,13 +51,8 @@ export default function Login(prop: propsType) {
           password: password,
         })
         .then((response) => {
-          const { auth } = response.data.data;
-          const { accessToken } = response.data.data;
-          localStorage.setItem('accessToken', accessToken);
-          localStorage.setItem('auth', auth); //'banthing'
           prop.setIsLogin(true);
           prop.setLoginModal(false);
-          // document.cookie = `accessToken=${accessToken}`; //! 녹두가 추가함
         })
         .catch((error) => {
           if (error)
@@ -83,11 +77,11 @@ export default function Login(prop: propsType) {
     } else {
       inner = '';
     }
+
     if (inner === 'true') {
       router.push(
         `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/kakaoLogin`,
       );
-      localStorage.setItem('auth', '');
     } else {
       setKakaoModal(true);
     }
@@ -104,7 +98,11 @@ export default function Login(prop: propsType) {
             &times;
           </span>
           <div className={styles.login_title}>
-            Ban<span className={styles.black}>Thing</span>
+            <img
+              className={styles.login_title_logo}
+              src="/banthing.png"
+              alt="BanThing Logo"
+            />
           </div>
           <input
             className={styles.login_input_box}
@@ -153,6 +151,11 @@ export default function Login(prop: propsType) {
             </span>
           </div>
         </div>
+
+        <div
+          className={styles.login_background}
+          onClick={() => prop.setLoginModal(false)}
+        ></div>
 
         {signUpModal ? (
           <>

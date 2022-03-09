@@ -1,5 +1,12 @@
-.chatting_ul {
-  height: 100%;
+@font-face {
+  font-family: 'NanumGothic';
+  src: url('../../../asset/NanumGothic/NanumGothic-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.chatting_list {
+  padding: 0;
 }
 .image {
   border-radius: 50%;
@@ -17,6 +24,7 @@
 }
 .message__bubble {
   background-color: var(--white-color);
+  font-family: 'NanumGothic';
   padding: 10px;
   border-radius: 15px;
   border-top-left-radius: 0;
@@ -30,12 +38,14 @@
 
 .message__bubble__user {
   background-color: var(--chat-by-me-color);
+  font-family: 'NanumGothic';
   border-radius: 15px;
   border-top-right-radius: 0px;
   padding: 10px;
   margin-left: 5px;
 }
 .message__author {
+  font-family: 'NanumGothic';
   margin-bottom: 8px;
   display: block;
 }

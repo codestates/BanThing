@@ -36,7 +36,7 @@ export default function Introduction(props: propsType): JSX.Element {
               </div>
             </Slide>
             <span className={styles.introduction_main_line}>
-              ───────────── * ─────────────
+              ─────────── * ───────────
             </span>
             <Fade triggerOnce={true} delay={900}>
               <div className={styles.introduction_description_right}>
@@ -74,7 +74,7 @@ export default function Introduction(props: propsType): JSX.Element {
               </div>
             </Slide>
             <span className={styles.introduction_main_line}>
-              ───────────── * ─────────────
+              ─────────── * ───────────
             </span>
             <Fade triggerOnce={true} delay={900}>
               <div className={styles.introduction_description_left}>

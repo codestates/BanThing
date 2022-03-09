@@ -21,7 +21,7 @@ const Main: NextPage = () => {
       <Head>
         <title>BanThing</title>
         <meta name="BanThing" content="Order with your foodmate" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
 
       <Script
@@ -29,7 +29,7 @@ const Main: NextPage = () => {
         crossOrigin="anonymous"
       ></Script>
       <section className={styles.section}>
-        <main className={styles.main}>
+        <main className={styles.main} id={'mainPage'}>
           <Map roomsData={setRoomsData} setLocation={setLocation} />
           <Sidebar location={location} roomsId={roomsId} />
         </main>
@@ -38,3 +38,6 @@ const Main: NextPage = () => {
   );
 };
 export default Main;
+function useMemot(arg0: () => any) {
+  throw new Error('Function not implemented.');
+}

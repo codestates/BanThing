@@ -6,6 +6,7 @@ axios.defaults.withCredentials = true;
 interface propsType {
   setIsModalOpen: Function;
   setSignUpModal?: Function;
+  setLoginMessage?: Function;
   type: string;
 }
 
@@ -13,54 +14,46 @@ export default function Modal(prop: propsType) {
   const router = useRouter();
 
   const handleSignout = () => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const accessToken = localStorage.getItem('accessToken');
-      const auth = localStorage.getItem('auth');
-      if (auth === 'banthing') {
-        axios
-          .delete(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/signout`, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              'Content-Type': 'application/json',
-            },
-          })
-          .then((response) => {
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('auth');
-            prop.setIsModalOpen(false);
-            router.push('/');
-            // document.cookie = ``; //!녹두가 추가함
-          });
-      } else {
-        axios
-          .delete(
-            `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/kakaoUnlink`,
-            {
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
-              },
-            },
-          )
-          .then((response) => {
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('auth');
-            prop.setIsModalOpen(false);
-            router.push('/');
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+    if (typeof document !== 'undefined') {
+      const cookieList = document.cookie.split(' ').filter((cookie) => {
+        return cookie.includes('accessToken');
+      });
+      const accessToken = cookieList[0].split('=')[1].replace(';', '');
+
+      axios
+        .delete(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/signout`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => {
+          prop.setIsModalOpen(false);
+          router.push('/');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
   const handleKakaoLogin = () => {
     router.push(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/kakaoLogin`);
-    localStorage.setItem('auth', '');
   };
 
   const handleModal = () => {
+    if (!prop.setSignUpModal) {
+      prop.setIsModalOpen(false);
+    } else if (prop.setSignUpModal) {
+      prop.setIsModalOpen(false);
+      prop.setSignUpModal(false);
+    }
+  };
+
+  const handleSignUpModal = () => {
+    if (prop.setLoginMessage) {
+      prop.setLoginMessage('');
+    }
     if (!prop.setSignUpModal) {
       prop.setIsModalOpen(false);
     } else if (prop.setSignUpModal) {
@@ -183,7 +176,7 @@ export default function Modal(prop: propsType) {
             <div className={styles.signup_modal_button_container}>
               <button
                 className={styles.signup_modal_button}
-                onClick={handleModal}
+                onClick={handleSignUpModal}
               >
                 확인
               </button>

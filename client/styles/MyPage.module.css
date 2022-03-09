@@ -1,21 +1,25 @@
+.mypage_header {
+  display: flex;
+  width: 100%;
+  height: 90px;
+}
+
 .mypage_container {
   display: flex;
-  position: fixed;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   justify-content: center;
   align-items: center;
 }
 
 .mypage_profile {
   display: flex;
-  position: fixed;
   width: 300px;
-  height: 600px;
+  height: 570px;
   align-items: center;
   text-align: center;
   flex-direction: column;
-  margin-top: 4.6vw;
+  align-items: center;
 }
 
 .mypage_image {
@@ -54,7 +58,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 35px auto 16px auto;
+  margin: 20px auto 12px auto;
 }
 
 .mypage_id_name {
@@ -150,6 +154,21 @@
   cursor: pointer;
 }
 
+.mypage_admin_button {
+  width: 80px;
+  min-height: 32px;
+  background-color: #ff8a3c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  font-family: 'NanumGothic', sans-serif;
+}
+
+.mypage_admin_button:hover {
+  cursor: pointer;
+}
+
 .mypage_error {
   display: flex;
   color: #ff6666;
@@ -168,4 +187,19 @@
 
 .mypage_space:hover {
   cursor: default;
+}
+
+@media screen and (max-width: 767px) {
+  .mypage_header {
+    height: 100px;
+  }
+  .mypage_image {
+    display: flex;
+    width: 160px;
+  }
+
+  .mypage_input_container {
+    margin-top: 20px;
+    margin-bottom: 14px;
+  }
 }

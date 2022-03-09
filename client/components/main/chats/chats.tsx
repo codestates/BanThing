@@ -1,26 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './chats.module.css';
 import Chat from '../chat/chat';
-import styled from 'styled-components';
 import NewChat from '../newChat/newChat';
-
-const Container = styled.div`
-  overflow-y: scroll;
-  min-height: 50px;
-  max-height: 70vh;
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-  @media screen and (max-height: 480px) {
-    max-height: 120vh;
-  }
-  @media screen and (max-height: 580px) {
-    max-height: 100vh;
-  }
-  @media screen and (max-height: 680px) {
-    max-height: 80vh;
-  }
-`;
 
 interface usersChats {
   data: {
@@ -45,6 +26,7 @@ interface ChatsType {
 const Chats = ({ usersChats, roomsId, addable, usernickname }: ChatsType) => {
   const [userchat, setChat] = useState<string[]>([]);
 
+  // joinRoom에서 받아온 방의 채팅과 유저가 보는 채팅을 push해줍니다.
   const onCreated = (chat: string) => {
     usersChats?.data.replyLog.push({
       id: usersChats?.data.replyLog.length + 1,
@@ -56,6 +38,7 @@ const Chats = ({ usersChats, roomsId, addable, usernickname }: ChatsType) => {
     setChat((chats) => [...chats, chat]);
   };
 
+  // 최신 덧글을 포커스 하기 위한 useEffect입니다.
   useEffect(() => {
     const chatContainer = document.querySelector(
       '#chat-Container',
@@ -80,7 +63,9 @@ const Chats = ({ usersChats, roomsId, addable, usernickname }: ChatsType) => {
           <></>
         )}
       </section>
-      {addable && <NewChat onCreated={onCreated} roomsId={roomsId} />}
+      <div className={styles.div}>
+        {addable && <NewChat onCreated={onCreated} roomsId={roomsId} />}
+      </div>
     </>
   );
 };

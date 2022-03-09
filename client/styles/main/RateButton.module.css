@@ -1,0 +1,17 @@
+.rate_button {
+  background-color: var(--white-color);
+  border-radius: 6px;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin: 4px;
+}
+.rate_button:hover {
+  cursor: pointer;
+}
+.rate_button:focus {
+  background-color: var(--orange-color);
+  border: 1px solid #ffcead;
+  color: var(--white-color);
+}

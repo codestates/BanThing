@@ -1,0 +1,123 @@
+@font-face {
+  font-family: 'BMDOHYEON';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NanumGothic-Bold';
+  src: url('../asset/NanumGothic/NanumGothic-Bold.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  /* position: fixed; */
+  font-family: 'BMDOHYEON', sans-serif;
+  position: relative;
+  background-color: var(--chat-background-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 15px;
+  top: 100px;
+  width: 50%;
+  height: 80%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: scroll;
+  max-width: 500px;
+  min-width: 340px;
+}
+.container_container::-webkit-scrollbar {
+  display: none;
+}
+
+.container_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  text-align: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: tomato;
+  padding-top: 5px;
+  color: white;
+  width: 50vw;
+  height: 70px;
+  font-size: 30px;
+  max-width: 500px;
+  min-width: 340px;
+}
+.container_ul {
+  margin-top: 85px;
+  padding: 0;
+  list-style: none;
+  font-size: 25px;
+}
+
+.container_li {
+  display: flex;
+  margin-bottom: 10px;
+  font-family: 'BMDOHYEON';
+  align-items: center;
+}
+
+.container_button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 85px;
+  height: 42px;
+  padding-top: 4px;
+  border: solid;
+  border-color: rgb(255, 53, 53);
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: white;
+  color: rgb(255, 53, 53);
+  margin-right: 25px;
+}
+
+.container_button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(255, 53, 53);
+}
+
+.container_nickname {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container_image {
+  width: 35px;
+  height: 35px;
+  margin-right: 25px;
+}
+
+.question {
+  margin-top: 80px;
+  margin-bottom: 100px;
+  width: 120px;
+  height: auto;
+}
+
+.span {
+  font-size: 45px;
+}

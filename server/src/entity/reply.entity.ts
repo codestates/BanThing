@@ -3,14 +3,18 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+import { Post } from './post.entity';
 
 @Entity()
 export class Reply {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @ManyToOne(() => Post)
+  @JoinColumn()
   post_id: number;
 
   @Column()

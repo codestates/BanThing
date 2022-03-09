@@ -4,6 +4,7 @@ import First from '../components/home/first/first';
 import Progress from '../components/home/progress';
 import Second from '../components/home/second/second';
 import Introduction from '../components/home/introduction';
+import IntroductionMobile from '../components/home/fourth/IntroductionMobile';
 import Third from '../components/home/third/third';
 import Caption from '../components/home/caption';
 import Footer from '../components/home/footer';
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
         <Head>
           <title>BanThing</title>
           <meta name="BanThing" content="Order with your foodmate" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/icon.ico" />
         </Head>
 
         <Progress />
@@ -42,11 +43,17 @@ const Home: NextPage = () => {
           description={[
             '마침 배달음식을 시켜먹고 싶은데',
             '배달비도 최저금액도 함께 나눌 수 있는',
-            '내 주변의 배달메이트를 찾으신다면',
+            '내 주변의 배달메이트를 반띵에서 찾아보세요!',
             ' ',
-            '지금 바로 반띵에서 확인해보세요!',
+            '지도상에서 현재 나의 위치를 기반으로',
+            '내 주변의 배달메이트들이 올린',
+            '반띵 게시글들을 확인할 수 있습니다.',
           ]}
         />
+
+        {/* <div className={styles.use_image_container}>
+          <img src="/use2.gif" alt="using-image" className={styles.use_image} />
+        </div> */}
 
         <Introduction
           imagePosition={'right'}
@@ -54,12 +61,17 @@ const Home: NextPage = () => {
           title={'댓글을 통한 메뉴선정'}
           description={[
             '어떤 햄버거를 먹을지, 어떤 치킨을 먹을지',
-            '배달메이트와 실시간으로 상의하여',
-            '구체적인 메뉴를 함께 정해보세요.',
+            '배달메이트가 올린 게시글에 댓글을 달아',
+            '구체적인 메뉴에 대해 상의해보세요.',
             ' ',
-            '마음이 잘 통한다면 주문하기만 하면 됩니다!',
+            '메뉴・역할・가격 등에 대한 합의가 끝났다면,',
+            '배달메이트와 함께 음식을 주문하고',
+            '맘편히 배달음식을 기다리기만 하면 됩니다!',
           ]}
         />
+
+        <IntroductionMobile />
+
         {/* <Introduction
           imagePosition={'right'}
           image={'/rating.png'}

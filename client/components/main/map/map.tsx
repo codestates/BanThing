@@ -21,12 +21,12 @@ interface mapType {
   roomsData: Dispatch<SetStateAction<number>>;
 }
 function Map({ setLocation, roomsData }: mapType) {
+  // 로딩의 상태
   const [loading, setLoading] = useState<boolean>(false);
+  // 데이터를 받아와 카테고리에 따라 다른 이미지를 사용합니다.
   const [data, setData] = useState<dataType>();
-  const [dummyToken1, setDummyToken1] = useState('');
-  const [dummyToken2, setDummyToken2] = useState('');
-  const [dummyToken3, setDummyToken3] = useState('');
 
+  // 글의 리스트를 받아옵니다.
   useEffect(() => {
     const getPosts = async () => {
       try {
@@ -39,30 +39,6 @@ function Map({ setLocation, roomsData }: mapType) {
       }
     };
     getPosts();
-    axios
-      .post(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/login`, {
-        user_id: 'dummy',
-        password: '1234',
-      })
-      .then((res) => {
-        setDummyToken1(res.data.data.accessToken);
-      });
-    axios
-      .post(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/login`, {
-        user_id: 'dummy2',
-        password: '1234',
-      })
-      .then((res) => {
-        setDummyToken2(res.data.data.accessToken);
-      });
-    axios
-      .post(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/users/login`, {
-        user_id: 'dummy3',
-        password: '1234',
-      })
-      .then((res) => {
-        setDummyToken3(res.data.data.accessToken);
-      });
   }, []);
 
   useEffect(() => {
@@ -77,6 +53,7 @@ function Map({ setLocation, roomsData }: mapType) {
     document.head.appendChild(mapScript);
 
     const clickEvent = (marker: any, map: any, roomId?: number) => {
+      // 마커 클릭 함수
       window.kakao.maps.event.addListener(marker, 'click', function () {
         createElement.style.display = 'none';
         chatRoom.style.display = 'none';
@@ -85,7 +62,11 @@ function Map({ setLocation, roomsData }: mapType) {
         if (roomId) {
           roomsData(roomId);
         }
+        // 모바일시 마커를 클릭 하면 사이드바를 나오게 합니다.
+        var pos = marker.getPosition();
+        map.panTo(pos);
       });
+      // 맵 클릭 함수
       window.kakao.maps.event.addListener(map, 'click', function () {
         joinRoom.style.display = 'none';
         makeRoom.style.display = 'none';
@@ -98,42 +79,15 @@ function Map({ setLocation, roomsData }: mapType) {
       window.kakao.maps.load(() => {
         const container = document.getElementById('map');
         navigator.geolocation.getCurrentPosition(function (position) {
-          const lat = position.coords.latitude, // 위도
-            lon = position.coords.longitude; // 경도
-          setLocation([lat, lon]);
-          const positions = [
-            {
-              title: '피자 먹을 사람',
-              content: '특정 브랜드만 먹습니다.',
-              location_latitude: `${lat + 0.001}`,
-              location_longitude: `${lon + 0.001}`,
-              host_role: 1,
-              category: '피자',
-              token: dummyToken1,
-            },
-            {
-              title: '햄버거 먹을 사람',
-              content: '원하시는 브랜드 먹겠습니다.',
-              location_latitude: `${lat - 0.001}`,
-              location_longitude: `${lon + 0.001}`,
-              host_role: 2,
-              category: '햄버거',
-              token: dummyToken2,
-            },
-            {
-              title: '치킨 먹을 사람',
-              content: '원하시는 브랜드 먹겠습니다.',
-              location_latitude: `${lat - 0.002}`,
-              location_longitude: `${lon + 0.002}`,
-              host_role: 2,
-              category: '치킨',
-              token: dummyToken3,
-            },
-          ];
+          const lat = position.coords.latitude, // 사용자의 위도
+            lon = position.coords.longitude; // 사용자의 경도
 
-          const options = {
+          setLocation([lat, lon]);
+
+          let options = {
             center: new window.kakao.maps.LatLng(lat, lon),
           };
+
           const circle = new window.kakao.maps.Circle({
             center: new window.kakao.maps.LatLng(lat, lon), // 원의 중심좌표 입니다
             radius: 200, // 미터 단위의 원의 반지름입니다
@@ -144,13 +98,13 @@ function Map({ setLocation, roomsData }: mapType) {
             fillColor: '#FF8A3D', // 채우기 색깔입니다
             fillOpacity: 0.3, // 채우기 불투명도 입니다
           });
-          const map = new window.kakao.maps.Map(container, options);
+          let map = new window.kakao.maps.Map(container, options);
           const markerPosition = new window.kakao.maps.LatLng(lat, lon);
           let marker = new window.kakao.maps.Marker({
             position: markerPosition,
           });
-          circle.setMap(map);
-          marker.setMap(map);
+          circle.setMap(map); // 원을 맵에 그려줍니다.
+          marker.setMap(map); // 마커를 맵에 찍어줍니다.
           if (data) {
             const roomList = data.data.postList;
             for (let i = 0; i < roomList.length; i++) {
@@ -194,36 +148,9 @@ function Map({ setLocation, roomsData }: mapType) {
               clickEvent(marker, map, roomList[i].id);
             }
           }
-          // data로 변경 예정
-          for (let i = 0; i < positions.length; i++) {
-            if (typeof window !== 'undefined' && positions[i].token) {
-              const headers = {
-                Authorization: `Bearer ${positions[i].token}`,
-              };
-              axios
-                .post(
-                  `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/post`,
-                  {
-                    title: positions[i].title,
-                    content: positions[i].content,
-                    location_latitude: positions[i].location_latitude,
-                    location_longitude: positions[i].location_longitude,
-                    host_role: positions[i].host_role,
-                    category: positions[i].category,
-                  },
-                  {
-                    headers,
-                  },
-                )
-                .then((response) => {
-                  console.log('1이라고 합니다.');
-                });
-            }
-            clickEvent(marker, map);
-          }
         });
       });
-      setLoading(true);
+      setLoading(true); // 로딩을 꺼줍니다.
     };
     mapScript.addEventListener('load', onLoadKakaoMap);
 

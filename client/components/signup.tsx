@@ -142,7 +142,6 @@ export default function SignUp(prop: propsType) {
         )
         .then((response) => {
           setDoubleCheckUserId(true);
-          console.log(response);
         })
         .catch((error) => {
           setIdMessage('이미 존재하는 아이디입니다.');
@@ -169,7 +168,6 @@ export default function SignUp(prop: propsType) {
         )
         .then((response) => {
           setDoubleCheckNickname(true);
-          console.log(response);
         })
         .catch((error) => {
           setNicknameMessage('이미 존재하는 닉네임입니다.');
@@ -220,7 +218,9 @@ export default function SignUp(prop: propsType) {
         )
         .then((response) => {
           setIsModalOpen(true);
-          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   };
@@ -235,7 +235,11 @@ export default function SignUp(prop: propsType) {
           &times;
         </span>
         <div className={styles.signup_title}>
-          Ban<span className={styles.black}>Thing</span>
+          <img
+            className={styles.signup_title_logo}
+            src="/banthing.png"
+            alt="BanThing Logo"
+          />
         </div>
         <div className={styles.signup_id_name_container}>
           <input

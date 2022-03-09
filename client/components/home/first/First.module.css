@@ -13,36 +13,57 @@
   font-style: normal;
 }
 
-.main {
-  min-height: 60vw;
+@font-face {
+  font-family: 'Pretendard-SemiBold';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff')
+    format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.title_container {
   display: flex;
-  width: 40vw;
-  margin: 0 4.6% 0 0;
+  width: 100vw;
+  max-width: 1500px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding-top: 13vw;
+  margin-bottom: 22vw;
+  /* background-color: gray; */
+}
+
+.main {
+  display: flex;
+  width: 35vw;
+  /* min-height: 30vw; */
+  margin-right: 3vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.title_container {
-  width: 95vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-}
-
 .title_image {
   display: flex;
-  width: 48vw;
-  box-shadow: 0 10px 20px 10px rgb(0 0 0 / 10%);
-  margin-right: 5vw;
+  margin-top: 3vw;
+  width: 45vw;
+  margin-right: 4vw;
+  /* box-shadow: 0 10px 20px 10px rgb(0 0 0 / 10%); */
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 
 .title_title {
-  font-size: 6vw;
-  font-weight: 600;
-  font-family: 'BMDOHYEON', sans-serif;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.title_logo {
+  display: flex;
+  width: 32vw;
 }
 
 .orange {
@@ -56,26 +77,40 @@
 .title_description {
   line-height: 1.4;
   width: 35vw;
-  margin: 1.5vw auto 3vw auto;
-  font-size: 2vw;
+  margin: auto auto 3vw auto;
+  font-size: 2.1vw;
   font-weight: 400;
   text-align: center;
   font-family: 'BMDOHYEON', sans-serif;
 }
 
 .title_button {
-  padding-top: 0.3vw;
   width: 12vw;
   height: 5vw;
   color: #ffffff;
   font-size: 2vw;
-  font-weight: 700;
   border-radius: 12px;
   background-color: #ff8a3c;
   border: solid;
   border-width: 5px;
   border-color: #ff8a3c;
   transition: 0.3s ease;
+  font-family: 'Pretendard-SemiBold', sans-serif;
+}
+
+.title_button_mobile {
+  display: none;
+  width: 12vw;
+  height: 5vw;
+  color: #ffffff;
+  font-size: 2vw;
+  border-radius: 12px;
+  background-color: #ff8a3c;
+  border: solid;
+  border-width: 5px;
+  border-color: #ff8a3c;
+  transition: 0.3s ease;
+  font-family: 'Pretendard-SemiBold', sans-serif;
 }
 
 .title_button_description {
@@ -117,4 +152,50 @@
   opacity: 1;
   right: 0;
   transition: 0.3s ease;
+}
+
+@media screen and (max-width: 767px) {
+  .title_container {
+    padding-top: 120px;
+    flex-direction: column;
+  }
+
+  .main {
+    width: 100vw;
+    margin-right: 0;
+  }
+
+  .title_logo {
+    display: flex;
+    width: 75vw;
+  }
+
+  .title_description {
+    width: 100vw;
+    font-size: 5.8vw;
+    margin: 0 auto 4vw auto;
+  }
+
+  .title_button {
+    display: none;
+  }
+
+  .title_button_mobile {
+    display: flex;
+    width: 35vw;
+    height: 16vw;
+    font-size: 6vw;
+    margin-bottom: 40vw;
+    margin-top: -3vw;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title_image {
+    width: 80vw;
+    margin: 0;
+    margin-bottom: 15vw;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
 }

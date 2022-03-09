@@ -1,45 +1,34 @@
 import { Dispatch, SetStateAction } from 'react';
-import styled from 'styled-components';
 import styles from '../../../styles/main/Rate.module.css';
 import buttonStyle from '../button.module.css';
 
-const Container = styled.div`
-  display: flex;
-  width: 100vw;
-  position: fixed;
-  right: 0;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 1;
-  backdrop-filter: blur(2px);
-  h1 {
-    font-size: 1.5em;
-    background-color: #0000000;
-  }
-`;
 interface makeRoomState {
   setMakeRoomModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function MakeRoomModal({ setMakeRoomModal }: makeRoomState) {
+  // 확인 버튼 클릭시 모달이 닫히게 하는 기능
   const onClick = () => {
     setMakeRoomModal(false);
   };
   return (
-    <>
-      <Container id="makeModal">
-        <form className={styles.rate_modal}>
-          <section className={styles.rate_title}>
-            <h1 className={styles.rate_h1}>내용을 모두 입력해주세요</h1>
-          </section>
+    <section className={styles.makeRoomModal__section} id="makeModal">
+      <form className={styles.rate_modal}>
+        <section className={styles.rate_title}>
+          <img
+            className={styles.makeRoom_image}
+            src="/image/please_write.png"
+            alt="please_write"
+          />
+          <h1 className={styles.rate_h1}>내용을 모두 입력해주세요</h1>
+        </section>
 
-          <section className={buttonStyle.button_container}>
-            <button className={buttonStyle.button} onClick={onClick}>
-              확인
-            </button>
-          </section>
-        </form>
-      </Container>
-    </>
+        <section className={buttonStyle.button_container}>
+          <button className={buttonStyle.button} onClick={onClick}>
+            확인
+          </button>
+        </section>
+      </form>
+    </section>
   );
 }

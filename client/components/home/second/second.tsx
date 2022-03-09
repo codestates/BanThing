@@ -45,14 +45,14 @@ export default function Second(): JSX.Element {
           </Fade>
         </div>
 
-        <Fade triggerOnce={true} delay={3200}>
-          <main className={styles.second_title_container}>
-            <div className={styles.second_title}>
-              <span>주문하기 망설여지는 배달음식</span>
-              <span className={styles.drop}></span>
-            </div>
-          </main>
-        </Fade>
+        {/* <Fade triggerOnce={true} delay={3200}> */}
+        <main className={styles.second_title_container}>
+          <div className={styles.second_title}>
+            <span>주문하기 망설여지는 배달음식</span>
+            <span className={styles.drop}></span>
+          </div>
+        </main>
+        {/* </Fade> */}
       </div>
     </>
   );

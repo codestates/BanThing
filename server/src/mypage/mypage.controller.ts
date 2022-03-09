@@ -14,11 +14,6 @@ export class MypageController {
     return await this.myPageService.userInfo(req.user);
   }
 
-  @Get('kakao') //카카오 마이페이지
-  async kakaoInfo(@Req() req: Request): Promise<object> {
-    return this.myPageService.kakaoInfo(req.cookies['accessToken']);
-  }
-
   @Post() //비밀번호 변경
   @UseGuards(AuthGuard)
   async editPassword(

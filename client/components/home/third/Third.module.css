@@ -8,7 +8,7 @@
 
 .third_container {
   display: flex;
-  min-height: 40vw;
+  min-height: 60vw;
   color: #ff8a3c;
   font-size: 4vw;
   flex-direction: column;
@@ -16,4 +16,12 @@
   justify-content: center;
   line-height: 1.7;
   font-family: 'BMDOHYEON', sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+  .third_container {
+    font-size: 5.5vw;
+    margin-top: 23vw;
+    margin-bottom: 23vw;
+  }
 }

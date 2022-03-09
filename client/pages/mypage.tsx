@@ -4,10 +4,11 @@ import styles from '../styles/MyPage.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from '../components/modal';
+import Link from 'next/link';
 
 axios.defaults.withCredentials = true;
 
-const MyPage: NextPage = () => {
+const MyPage: NextPage = (props) => {
   const isSmallLetterAndNumber4to10 = /^[a-z0-9]{4,10}$/;
 
   const [changePassword, setChangePassword] = useState('');
@@ -22,46 +23,36 @@ const MyPage: NextPage = () => {
   const [userId, setUserId] = useState('');
   const [nickname, setNickname] = useState('');
   const [auth, setAuth] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const [isModifyModalOpen, setIsModifyModalOpen] = useState(false);
   const [isSignoutModalOpen, setIsSignoutModalOpen] = useState(false);
   const [isKakaoModalOpen, setIsKakaoModalOpen] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const accessToken = localStorage.getItem('accessToken');
-      const auth = localStorage.getItem('auth');
-      if (auth === 'banthing') {
-        axios
-          .get(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/mypage`, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              'Content-Type': 'application/json',
-            },
-          })
-          .then((response) => {
-            const { userInfo } = response.data.data;
-            setUserId(userInfo.user_id);
-            setNickname(userInfo.nickname);
-            setAuth(userInfo.auth);
-          });
-      } else {
-        axios
-          .get(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/mypage/kakao`, {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              'Content-Type': 'application/json',
-            },
-          })
-          .then((response) => {
-            const { userInfo } = response.data.data;
-            setUserId(userInfo.user_id);
-            setNickname(userInfo.nickname);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+    if (typeof document !== 'undefined') {
+      const cookieList = document.cookie.split(' ').filter((cookie) => {
+        return cookie.includes('accessToken');
+      });
+      const accessToken = cookieList[0].split('=')[1].replace(';', '');
+
+      axios
+        .get(`${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/mypage`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        .then((response) => {
+          const { userInfo } = response.data.data;
+          setUserId(userInfo.user_id);
+          setNickname(userInfo.nickname);
+          setAuth(userInfo.auth);
+          setIsAdmin(userInfo.isAdmin);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, []);
 
@@ -76,7 +67,9 @@ const MyPage: NextPage = () => {
   };
 
   const handleModify = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (auth === 'banthing') {
+    if (auth === 'kakao') {
+      setIsKakaoModalOpen(true);
+    } else {
       if (changePassword === '' || checkPassword === '') {
         if (changePassword === '') {
           setChangePasswordMessage('필수 정보입니다.');
@@ -90,8 +83,12 @@ const MyPage: NextPage = () => {
         setCheckPasswordMessage('비밀번호가 일치하지 않습니다.');
         setCorrectCheckPassword(false);
       } else if (correctChangePassword && correctCheckPassword) {
-        if (typeof window !== 'undefined' && window.localStorage) {
-          const accessToken = localStorage.getItem('accessToken');
+        if (typeof document !== 'undefined') {
+          const cookieList = document.cookie.split(' ').filter((cookie) => {
+            return cookie.includes('accessToken');
+          });
+          const accessToken = cookieList[0].split('=')[1].replace(';', '');
+
           axios
             .post(
               `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}/mypage`,
@@ -109,11 +106,12 @@ const MyPage: NextPage = () => {
               setChangePassword('');
               setCheckPassword('');
               setIsModifyModalOpen(true);
+            })
+            .catch((error) => {
+              console.log(error);
             });
         }
       }
-    } else {
-      setIsKakaoModalOpen(true);
     }
   };
 
@@ -166,9 +164,9 @@ const MyPage: NextPage = () => {
       <Head>
         <title>BanThing</title>
         <meta name="BanThing" content="Order with your foodmate" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
-
+      <div className={styles.mypage_header}></div>
       <div className={styles.mypage_container}>
         <div className={styles.mypage_profile}>
           <img
@@ -176,21 +174,31 @@ const MyPage: NextPage = () => {
             alt="user-image"
             className={styles.mypage_image}
           />
-          {/* <div className={styles.mypage_score_container}>
-            <div className={styles.mypage_score_description}>나의 평점</div>
-            <div className={styles.mapage_score}>
-              9.6<span>{`(${12})`}</span>
-            </div>
-          </div> */}
+
+          {isAdmin ? (
+            <Link
+              href={{
+                pathname: 'admin',
+                query: { isAdmin: 'true' },
+              }}
+              as={'/admin'}
+            >
+              <button className={styles.mypage_admin_button}>ADMIN</button>
+            </Link>
+          ) : (
+            <></>
+          )}
           <div className={styles.mypage_input_container}>
             <div className={styles.mypage_input_disabled}>
               <input
                 className={styles.mypage_id_name}
+                value={userId || ''}
                 placeholder={userId}
                 disabled
               />
               <input
                 className={styles.mypage_id_name}
+                value={nickname || ''}
                 placeholder={nickname}
                 disabled
               />
@@ -208,6 +216,7 @@ const MyPage: NextPage = () => {
             ) : (
               <input
                 className={styles.mypage_password_change_check_kakao}
+                value={''}
                 placeholder="비밀번호를 변경할 수 없습니다."
                 disabled
               />
@@ -234,6 +243,7 @@ const MyPage: NextPage = () => {
             ) : (
               <input
                 className={styles.mypage_password_change_check_kakao}
+                value={''}
                 placeholder="비밀번호를 변경할 수 없습니다."
                 disabled
               />

@@ -2,6 +2,7 @@ import buttonStyles from '../button.module.css';
 import styles from './createRoom.module.css';
 
 const CreateRoom = () => {
+  // CreateRoom component를 끄고 makeRoom component를 flex시킵니다.
   const onClick = () => {
     const createElement = document.querySelector('#CreateRoom')! as HTMLElement;
     const makeRoom = document.querySelector('#MakeRoom')! as HTMLElement;
